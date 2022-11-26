@@ -62,9 +62,9 @@ object Network {
 
 object Features {
     val first by lazy { ":features:first" }
-    val second by lazy { ":features:second" }
+    val home by lazy { ":features:home" }
 
-    fun loadAll() = listOf(first, second)
+    fun loadAll() = listOf(first, home)
 }
 
 object LocalLibs {

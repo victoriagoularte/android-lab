@@ -9,7 +9,7 @@ android {
     compileSdk = ConfigData.compileSdkVersion
 
     defaultConfig {
-        applicationId = "com.exlab.first"
+        applicationId = "com.exlab.home"
         minSdk = ConfigData.minSdkVersion
         targetSdk = ConfigData.targetSdkVersion
         versionCode = ConfigData.versionCode
@@ -49,8 +49,7 @@ dependencies {
     Coroutines.loadAll().forEach { implementation(it) }
     Network.loadAll().forEach { implementation(it) }
 
-    annotationProcessor(AndroidX.room)
-    kapt(AndroidX.roomCompiler)
+    LocalLibs.loadAll().forEach { implementation(project(it)) }
 
     implementation(Koin.android)
 }

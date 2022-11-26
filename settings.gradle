@@ -16,6 +16,6 @@ rootProject.name = "ex-lab"
 include ':app'
 include ':features'
 include ':features:first'
-include ':features:second'
+include ':features:home'
 include ':navigation'
 include ':ds'

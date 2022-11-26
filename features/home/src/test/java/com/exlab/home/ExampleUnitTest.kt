@@ -1,4 +1,4 @@
-package com.exlab.second
+package com.exlab.home
 
 import org.junit.Test
 
