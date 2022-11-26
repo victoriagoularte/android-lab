@@ -1,48 +1,56 @@
 plugins {
-    id 'com.android.application'
-    id("kotlin-android")
+    id("com.android.application")
     id("kotlin-kapt")
     id("kotlin-parcelize")
+    kotlin("android")
 }
 
-android {compileSdk = BuildConfig.COMPILE_SDK
+android {
+    compileSdk = ConfigData.compileSdkVersion
+
     defaultConfig {
-        minSdk = BuildConfig.MIN_SDK
-        targetSdk = BuildConfig.TARGET_SDK
-        testInstrumentationRunner = BuildConfig.TEST_INSTRUMENTATION_RUNNER
-        consumerProguardFiles("proguard-rules.pro")
+        applicationId = ConfigData.applicationId
+        minSdk = ConfigData.minSdkVersion
+        targetSdk = ConfigData.targetSdkVersion
+        versionCode = ConfigData.versionCode
+        versionName = ConfigData.versionName
+
+        javaCompileOptions {
+            annotationProcessorOptions {
+                argument("room.schemaLocation", "$projectDir/schemas")
+                argument("room.incremental", "true")
+                argument("room.expandProjection", "true")
+            }
+        }
     }
 
     buildTypes {
         getByName("release") {
             isMinifyEnabled = false
             proguardFiles(
-                    getDefaultProguardFile("proguard-android-optimize.txt"),
-                    "proguard-rules.pro"
+                getDefaultProguardFile("proguard-android-optimize.txt"),
+                "proguard-rules.pro"
             )
         }
     }
+
     compileOptions {
         sourceCompatibility = JavaVersion.VERSION_11
         targetCompatibility = JavaVersion.VERSION_11
     }
+
     kotlinOptions {
         jvmTarget = JavaVersion.VERSION_11.toString()
     }
 }
 
 dependencies {
-    implementation(project(Commons.get()))
-
     AndroidX.loadAll().forEach { implementation(it) }
+    Coroutines.loadAll().forEach { implementation(it) }
+    Network.loadAll().forEach { implementation(it) }
 
-    implementation(RetrofitConfig.retrofit)
+    annotationProcessor(AndroidX.room)
+    kapt(AndroidX.roomCompiler)
 
-    Google.loadAll().forEach { implementation(it) }
-    kapt(Google.hiltCompiler)
-
-    JUnit.loadAll().forEach { testImplementation(it) }
-    TestFeature.loadAll().forEach { testImplementation(it) }
-
-    AndroidTest.loadAll().forEach { androidTestImplementation(it) }
+    implementation(Koin.android)
 }

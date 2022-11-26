@@ -12,6 +12,9 @@ object AndroidX {
     val navigation by lazy { "androidx.navigation:navigation-ui-ktx:${Versions.navigation}" }
     val lifecycle by lazy { "androidx.lifecycle:lifecycle-extensions:${Versions.lifecycle}" }
     val cardView by lazy { "androidx.cardview:cardview:${Versions.cardView}" }
+    val room by lazy { "androidx.room:room-runtime:${Versions.room}" }
+    val roomCompiler by lazy { "androidx.room:room-compiler:${Versions.room}" }
+    val roomKtx by lazy { "androidx.room:room-ktx:${Versions.room}" }
 
     fun loadAll() = listOf(core, appCompat, constraintLayout, viewModel, navigation, lifecycle, cardView)
 }
