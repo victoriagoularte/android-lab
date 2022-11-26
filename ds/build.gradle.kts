@@ -1,7 +1,5 @@
 plugins {
     id("com.android.library")
-    id("kotlin-kapt")
-    id("kotlin-parcelize")
     kotlin("android")
 }
 
@@ -11,21 +9,8 @@ android {
     defaultConfig {
         minSdk = ConfigData.minSdkVersion
         targetSdk = ConfigData.targetSdkVersion
-        vectorDrawables {
-            useSupportLibrary = true
-        }
 
-        javaCompileOptions {
-            annotationProcessorOptions {
-                argument("room.schemaLocation", "$projectDir/schemas")
-                argument("room.incremental", "true")
-                argument("room.expandProjection", "true")
-            }
-        }
-    }
-
-    buildFeatures {
-        compose = true
+        testInstrumentationRunner = ConfigData.testInstrumentationRunner
     }
 
     buildTypes {
@@ -36,6 +21,10 @@ android {
                 "proguard-rules.pro"
             )
         }
+    }
+
+    buildFeatures {
+        compose = true
     }
 
     compileOptions {
@@ -50,12 +39,6 @@ android {
     kotlinOptions {
         jvmTarget = JavaVersion.VERSION_11.toString()
     }
-
-    packagingOptions {
-        resources {
-            excludes += "/META-INF/{AL2.0,LGPL2.1}"
-        }
-    }
 }
 
 dependencies {
@@ -63,12 +46,9 @@ dependencies {
     implementation(composeBom)
     androidTestImplementation(composeBom)
 
-    AndroidX.loadAll().forEach { implementation(it) }
-    Coroutines.loadAll().forEach { implementation(it) }
-    Network.loadAll().forEach { implementation(it) }
+    implementation(AndroidX.core)
+    implementation(AndroidX.appCompat)
     Compose.loadAll().forEach { implementation(it) }
-
-    LocalLibs.loadAll().forEach { implementation(project(it)) }
-
-    implementation(Koin.android)
+    testImplementation(AndroidTest.junit)
+    androidTestImplementation(AndroidTest.junitExt)
 }

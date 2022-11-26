@@ -76,6 +76,7 @@ object LocalLibs {
 }
 
 object Compose {
+    val bom by lazy { "androidx.compose:compose-bom:2022.10.00" }
     val material3 by lazy { "androidx.compose.material3:material3" }
     val material2 by lazy { "androidx.compose.material:material" }
     val foundation by lazy { "androidx.compose.foundation:foundation" }

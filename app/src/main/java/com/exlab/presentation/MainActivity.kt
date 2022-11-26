@@ -7,10 +7,10 @@ import org.koin.android.ext.android.inject
 
 class MainActivity : AppCompatActivity() {
 
-    private val firstFeatureNavigation: HomeNavigation by inject()
+    private val homeNavigation: HomeNavigation by inject()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        firstFeatureNavigation.navigateToHome(this)
+        homeNavigation.navigateToHome(this)
     }
 }
