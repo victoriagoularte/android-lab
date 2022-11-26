@@ -24,6 +24,10 @@ android {
         }
     }
 
+    buildFeatures {
+        compose = true
+    }
+
     buildTypes {
         getByName("release") {
             isMinifyEnabled = false
@@ -37,6 +41,10 @@ android {
     compileOptions {
         sourceCompatibility = JavaVersion.VERSION_11
         targetCompatibility = JavaVersion.VERSION_11
+    }
+
+    composeOptions {
+        kotlinCompilerExtensionVersion = "1.3.2"
     }
 
     kotlinOptions {

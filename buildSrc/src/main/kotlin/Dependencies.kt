@@ -16,7 +16,8 @@ object AndroidX {
     val roomCompiler by lazy { "androidx.room:room-compiler:${Versions.room}" }
     val roomKtx by lazy { "androidx.room:room-ktx:${Versions.room}" }
 
-    fun loadAll() = listOf(core, appCompat, constraintLayout, viewModel, navigation, lifecycle, cardView)
+    fun loadAll() =
+        listOf(core, appCompat, constraintLayout, viewModel, navigation, lifecycle, cardView)
 }
 
 object AndroidTest {
@@ -72,4 +73,38 @@ object LocalLibs {
     val navigation by lazy { ":navigation" }
 
     fun loadAll() = listOf(ds, navigation)
+}
+
+object Compose {
+    val material3 by lazy { "androidx.compose.material3:material3" }
+    val material2 by lazy { "androidx.compose.material:material" }
+    val foundation by lazy { "androidx.compose.foundation:foundation" }
+    val ui by lazy { "androidx.compose.ui:ui" }
+    val support by lazy { "androidx.compose.ui:ui-tooling-preview" }
+    val materialIcons by lazy { "androidx.compose.material:material-icons-core" }
+    val materialIconsExt by lazy { "androidx.compose.material:material-icons-extended" }
+    val windowSize by lazy { "androidx.compose.material3:material3-window-size-class" }
+    val activity by lazy { "androidx.activity:activity-compose:1.5.1" }
+    val viewModel by lazy { "androidx.lifecycle:lifecycle-viewmodel-compose:2.5.1" }
+    val liveData by lazy { "androidx.compose.runtime:runtime-livedata" }
+    val uiTest by lazy { "androidx.compose.ui:ui-test-junit4" }
+    val uiManifest by lazy { "androidx.compose.ui:ui-test-manifest" }
+    val uiTooling by lazy { "androidx.compose.ui:ui-tooling" }
+
+    fun loadAll() = listOf(
+        material2,
+        material3,
+        foundation,
+        ui,
+        support,
+        materialIcons,
+        materialIconsExt,
+        windowSize,
+        activity,
+        viewModel,
+        liveData,
+        uiTest,
+        uiManifest,
+        uiTooling
+    )
 }
