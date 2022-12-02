@@ -10,21 +10,44 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
+import com.exlab.components.lists.MenuCardData
+import com.exlab.components.lists.MenuCardGrid
+import com.exlab.home.R
 import com.exlab.theme.Theme
 
 class HomeActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContent {
-            Theme {
-                // A surface container using the 'background' color from the theme
-                Surface(
-                    modifier = Modifier.fillMaxSize(),
-                    color = MaterialTheme.colorScheme.background
-                ) {
-                    Greeting("Android")
-                }
+            Surface(
+                modifier = Modifier.fillMaxSize(),
+                color = MaterialTheme.colorScheme.surface
+            ) {
+                val cards = listOf(
+                    MenuCardData(
+                        R.string.menu_calendar_label,
+                        R.string.menu_calendar_description,
+                        com.google.android.material.R.drawable.material_ic_calendar_black_24dp
+                    ),
+                    MenuCardData(
+                        R.string.menu_calendar_label,
+                        R.string.menu_calendar_description,
+                        com.google.android.material.R.drawable.material_ic_calendar_black_24dp
+                    ),
+                    MenuCardData(
+                        R.string.menu_calendar_label,
+                        R.string.menu_calendar_description,
+                        com.google.android.material.R.drawable.material_ic_calendar_black_24dp
+                    ),
+                    MenuCardData(
+                        R.string.menu_calendar_label,
+                        R.string.title_activity_home,
+                        com.google.android.material.R.drawable.material_ic_calendar_black_24dp
+                    )
+                )
+                MenuCardGrid(cards = cards)
             }
+
         }
     }
 }
